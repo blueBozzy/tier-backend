@@ -10,7 +10,7 @@ const timestamps = {
 export const words = pgTable('words',{
     id: integer('id').primaryKey().generatedAlwaysAsIdentity(),
     name: varchar('name', {length: 50}).notNull().unique(),
-    code: varchar('type', {length: 50}).notNull().unique(),
+    type: varchar('type', {length: 50}).notNull().unique(),
     link: varchar('link', {length: 255}).notNull().unique(),
     description: varchar('description', {length: 255}),
     ...timestamps
@@ -35,5 +35,5 @@ export const typesRelations = relations(types, ({one, many}) => ({
 export type Word = typeof words.$inferSelect
 export type NewWord = typeof words.$inferInsert
 
-export type Type = typeof words.$inferSelect
-export type NewType = typeof words.$inferInsert
+export type Type = typeof types.$inferSelect
+export type NewType = typeof types.$inferInsert
